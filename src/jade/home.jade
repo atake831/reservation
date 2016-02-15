@@ -1,0 +1,18 @@
+ons-navigator(var="homeNavigator")
+    ons-page(ng-controller="HomeController")
+        ons-toolbar
+            div.left
+            div.center Home
+            div.right
+                ons-toolbar-button(ng-click="addContents()")
+                  ons-icon(icon="ion-compose")
+        ons-list(style="margin: -1px 0")
+            ons-list-item.item(modifier="chevron" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" ng-click="viewDetail(i)")
+                ons-row
+                    ons-col(width="60px")
+                        div.item-thum
+                    ons-col
+                        header
+                            span.item-title Rorem Ipsum
+                            span.item-label 5h
+                        p.item-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
