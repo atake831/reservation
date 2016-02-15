@@ -153,6 +153,40 @@ gulp.task('prepare-cordova', function() {
     .pipe($.shell(['cordova prepare'], {cwd: __dirname}));
 });
 
+////////////////////
+// concat-js-library
+////////////////////
+gulp.task('concat-js-lib', function() {
+  return gulp.src([
+      'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/angular/angular.min.js',
+      'bower_components/angular-route/angular-route.min.js',
+      'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+      'bower_components/moment/moment.js',
+      'bower_components/angular-ui-calendar/src/calendar.js',
+      'bower_components/fullcalendar/dist/fullcalendar.js',
+      'bower_components/fullcalendar/dist/gcal.js',
+      'bower_components/fullcalendar/dist/lang/ja.js'
+    ])
+    .pipe($.concat('vendors.js'))
+    .pipe(gulp.dest(__dirname + '/www/lib/'));
+});
+
+////////////////////
+// concat-js-library
+////////////////////
+gulp.task('concat-css-lib', function() {
+  return gulp.src([
+      'bower_components/fullcalendar/dist/fullcalendar.min.css',
+      'bower_components/bootstrap-css/css/bootstrap.css'
+    ])
+    .pipe($.concat('vendors.css'))
+    .pipe(gulp.dest(__dirname + '/www/lib/'));
+});
+
+gulp.task('concat-lib', ['concat-js-lib', 'concat-css-lib']);
+
 // utils
 function plumber() {
   return $.plumber({errorHandler: $.notify.onError()});
