@@ -15,12 +15,108 @@
             .when('/select', { templateUrl: 'views/select.html' })
             .when('/me', { templateUrl: 'views/profile.html' })
             .when('/admin', { templateUrl: 'views/admin.html' })
+            .when('/tournament', { templateUrl: 'views/tournament.html' })
             .otherwise({redirectTo: '/home'});
     });
 
     app.controller('AppController', function ($scope, $location) {
         $(document).ready(function(){
-            $location.path('/home');
+            // $location.path('/home');
+            $location.path('/tournament');
+        });
+    });
+    app.controller('TournamentController', function ($scope, $location) {
+        var rounds = [
+            //-- round 1
+            [
+                {
+                  player1: { name: "Player 111", winner: true, ID: 111 },
+                  player2: { name: "Player 112", ID: 112 },
+                },
+                {
+                  player1: { name: "Player 112", winner: true, ID: 112 },
+                  player2: { name: "Player 212", ID: 212 }
+                },
+                {
+                  player1: { name: "Player 113", winner: true, ID: 113 },
+                  player2: { name: "Player 213", ID: 213 }
+                },
+                {
+                  player1: { name: "Player 114", winner: true, ID: 114 },
+                  player2: { name: "Player 214", ID: 214 }
+                },
+                {
+                  player1: { name: "Player 115", winner: true, ID: 115 },
+                  player2: { name: "Player 215", ID: 215 }
+                },
+                {
+                  player1: { name: "Player 116", winner: true, ID: 116 },
+                  player2: { name: "Player 216", ID: 216 }
+                },
+                {
+                  player1: { name: "Player 117", winner: true, ID: 117 },
+                  player2: { name: "Player 217", ID: 217 }
+                },
+                {
+                  player1: { name: "Player 118", winner: true, ID: 118 },
+                  player2: { name: "Player 218", ID: 218 }
+                },
+            ],
+            //-- round 2
+            [
+                {
+                  player1: { name: "Player 111", winner: true, ID: 111 },
+                  player2: { name: "Player 212", ID: 212 }
+                },
+                {
+                  player1: { name: "Player 113", winner: true, ID: 113 },
+                  player2: { name: "Player 214", ID: 214 }
+                },
+                {
+                  player1: { name: "Player 115", winner: true, ID: 115 },
+                  player2: { name: "Player 216", ID: 216 }
+                },
+                {
+                  player1: { name: "Player 117", winner: true, ID: 117 },
+                  player2: { name: "Player 218", ID: 218 }
+                },
+            ],
+            //-- round 3
+            [
+                {
+                  player1: { name: "Player 111", winner: true, ID: 111 },
+                  player2: { name: "Player 113", ID: 113 }
+                },
+                {
+                  player1: { name: "Player 115", winner: true, ID: 115 },
+                  player2: { name: "Player 218", ID: 218 }
+                },
+            ],
+            //-- round 4
+            [
+                {
+                  player1: { name: "Player 113", winner: true, ID: 113 },
+                  player2: { name: "Player 218", winner: true, ID: 218 },
+                },
+            ],
+            //-- Champion
+            [
+                {
+                  player1: { name: "Player 113", winner: true, ID: 113 },
+                },
+            ],
+        ];
+
+        $(".brackets").brackets({
+            rounds: rounds,
+            color_title: 'black',
+            border_color: 'black',
+            color_player: 'white',
+            bg_player: '#46CFB0',
+            color_player_hover: 'white',
+            bg_player_hover: '#E95546',
+            border_radius_player: '5px',
+            border_radius_lines: '5px',
         });
     });
     app.controller('AdminController', function ($scope, $location, $timeout) {
@@ -124,6 +220,9 @@
         }
     });
     app.controller('HomeController', function ($scope, $rootScope, $location) {
+        $scope.tournament = function() {
+            $location.path('/tournament');
+        }
         $scope.admin = function() {
             $location.path('/admin');
         }

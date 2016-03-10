@@ -168,6 +168,7 @@ gulp.task('concat-js-lib', function() {
       'bower_components/fullcalendar/dist/fullcalendar.js',
       'bower_components/fullcalendar/dist/gcal.js',
       'bower_components/fullcalendar/dist/lang/ja.js'
+      // 'vendors/brackets.js'
     ])
     .pipe($.concat('vendors.js'))
     .pipe(gulp.dest(__dirname + '/www/lib/'));
